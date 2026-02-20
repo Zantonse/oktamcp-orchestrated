@@ -1,0 +1,5 @@
+{
+    "name": "okta-mcp",
+    "private": true,
+    "workspaces": ["packages/*"]
+  }

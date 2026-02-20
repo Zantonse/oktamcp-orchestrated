@@ -1,0 +1,44 @@
+{
+  "mcpServers": {
+    "okta-users": {
+      "command": "node",
+      "args": ["/Users/craigverzosa/Documents/Work/Accounts/okta-mcp/packages/users/dist/index.js"],
+      "env": {
+        "OKTA_ORG_URL": "https://your-org.okta.com",
+        "OKTA_API_TOKEN": "your-api-token"
+      }
+    },
+    "okta-apps": {
+      "command": "node",
+      "args": ["/Users/craigverzosa/Documents/Work/Accounts/okta-mcp/packages/apps/dist/index.js"],
+      "env": {
+        "OKTA_ORG_URL": "https://your-org.okta.com",
+        "OKTA_API_TOKEN": "your-api-token"
+      }
+    },
+    "okta-governance": {
+      "command": "node",
+      "args": ["/Users/craigverzosa/Documents/Work/Accounts/okta-mcp/packages/governance/dist/index.js"],
+      "env": {
+        "OKTA_ORG_URL": "https://your-org.okta.com",
+        "OKTA_API_TOKEN": "your-api-token"
+      }
+    },
+    "okta-policy": {
+      "command": "node",
+      "args": ["/Users/craigverzosa/Documents/Work/Accounts/okta-mcp/packages/policy/dist/index.js"],
+      "env": {
+        "OKTA_ORG_URL": "https://your-org.okta.com",
+        "OKTA_API_TOKEN": "your-api-token"
+      }
+    },
+    "okta-admin": {
+      "command": "node",
+      "args": ["/Users/craigverzosa/Documents/Work/Accounts/okta-mcp/packages/admin/dist/index.js"],
+      "env": {
+        "OKTA_ORG_URL": "https://your-org.okta.com",
+        "OKTA_API_TOKEN": "your-api-token"
+      }
+    }
+  }
+}

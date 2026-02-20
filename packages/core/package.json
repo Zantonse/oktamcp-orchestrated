@@ -1,0 +1,20 @@
+{
+  "name": "@okta-mcp/core",
+  "version": "0.1.0",
+  "description": "Shared Okta REST API utilities for okta-mcp servers",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "axios": "^1.7.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.0",
+    "@types/node": "^20.0.0"
+  },
+  "license": "MIT"
+}

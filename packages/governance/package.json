@@ -1,0 +1,25 @@
+{
+  "name": "okta-mcp-governance",
+  "version": "0.1.0",
+  "description": "Okta MCP server for Identity Governance — access reviews, entitlements, bundles, access requests",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "okta-mcp-governance": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf dist",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@okta-mcp/core": "*",
+    "@modelcontextprotocol/sdk": "^1.12.0",
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.0",
+    "@types/node": "^20.0.0"
+  }
+}
