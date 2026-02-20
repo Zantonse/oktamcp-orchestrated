@@ -7,7 +7,17 @@ import { registerSystemLogTools } from "./tools/system-log.js";
 import { registerDeviceTools } from "./tools/devices.js";
 import { registerEventHookTools } from "./tools/event-hooks.js";
 
-const client = new OktaClient();
+const client = new OktaClient({
+  requiredScopes: [
+    "okta.roles.read",
+    "okta.roles.manage",
+    "okta.logs.read",
+    "okta.devices.read",
+    "okta.devices.manage",
+    "okta.eventHooks.read",
+    "okta.eventHooks.manage",
+  ],
+});
 const server = new McpServer({
   name: "okta-mcp-admin",
   version: "0.1.0",

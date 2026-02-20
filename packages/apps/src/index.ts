@@ -7,7 +7,15 @@ import { registerAppUserTools } from "./tools/app-users.js";
 import { registerAppGroupTools } from "./tools/app-groups.js";
 import { registerAppCredentialTools } from "./tools/app-credentials.js";
 
-const client = new OktaClient();
+const client = new OktaClient({
+  requiredScopes: [
+    "okta.apps.read",
+    "okta.apps.manage",
+    "okta.users.read",
+    "okta.groups.read",
+    "okta.groups.manage",
+  ],
+});
 const server = new McpServer({
   name: "okta-mcp-apps",
   version: "0.1.0",

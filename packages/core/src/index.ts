@@ -1,8 +1,9 @@
 // @okta-mcp/core — barrel export
 // Every public API of the core package is re-exported here.
 
-export { OktaClient } from "./client.js";
+export { OktaClient, type OktaClientOptions } from "./client.js";
 export { IgaClient } from "./iga-client.js";
+export { OAuthTokenProvider, type OAuthConfig } from "./oauth.js";
 export {
   OktaApiError,
   parseOktaErrorBody,

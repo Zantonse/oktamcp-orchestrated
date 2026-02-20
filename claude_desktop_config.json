@@ -5,7 +5,8 @@
       "args": ["/Users/craigverzosa/Documents/Work/Accounts/okta-mcp/packages/users/dist/index.js"],
       "env": {
         "OKTA_ORG_URL": "https://your-org.okta.com",
-        "OKTA_API_TOKEN": "your-api-token"
+        "OKTA_CLIENT_ID": "your-oauth-client-id",
+        "OKTA_PRIVATE_KEY": "your-private-key-pem-or-jwk"
       }
     },
     "okta-apps": {
@@ -13,7 +14,8 @@
       "args": ["/Users/craigverzosa/Documents/Work/Accounts/okta-mcp/packages/apps/dist/index.js"],
       "env": {
         "OKTA_ORG_URL": "https://your-org.okta.com",
-        "OKTA_API_TOKEN": "your-api-token"
+        "OKTA_CLIENT_ID": "your-oauth-client-id",
+        "OKTA_PRIVATE_KEY": "your-private-key-pem-or-jwk"
       }
     },
     "okta-governance": {
@@ -21,7 +23,8 @@
       "args": ["/Users/craigverzosa/Documents/Work/Accounts/okta-mcp/packages/governance/dist/index.js"],
       "env": {
         "OKTA_ORG_URL": "https://your-org.okta.com",
-        "OKTA_API_TOKEN": "your-api-token"
+        "OKTA_CLIENT_ID": "your-oauth-client-id",
+        "OKTA_PRIVATE_KEY": "your-private-key-pem-or-jwk"
       }
     },
     "okta-policy": {
@@ -29,7 +32,8 @@
       "args": ["/Users/craigverzosa/Documents/Work/Accounts/okta-mcp/packages/policy/dist/index.js"],
       "env": {
         "OKTA_ORG_URL": "https://your-org.okta.com",
-        "OKTA_API_TOKEN": "your-api-token"
+        "OKTA_CLIENT_ID": "your-oauth-client-id",
+        "OKTA_PRIVATE_KEY": "your-private-key-pem-or-jwk"
       }
     },
     "okta-admin": {
@@ -37,7 +41,8 @@
       "args": ["/Users/craigverzosa/Documents/Work/Accounts/okta-mcp/packages/admin/dist/index.js"],
       "env": {
         "OKTA_ORG_URL": "https://your-org.okta.com",
-        "OKTA_API_TOKEN": "your-api-token"
+        "OKTA_CLIENT_ID": "your-oauth-client-id",
+        "OKTA_PRIVATE_KEY": "your-private-key-pem-or-jwk"
       }
     }
   }

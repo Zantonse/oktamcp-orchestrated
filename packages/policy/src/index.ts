@@ -8,7 +8,16 @@ import { registerClaimTools } from "./tools/claims.js";
 import { registerAuthPolicyTools } from "./tools/auth-policies.js";
 import { registerInlineHookTools } from "./tools/inline-hooks.js";
 
-const client = new OktaClient();
+const client = new OktaClient({
+  requiredScopes: [
+    "okta.policies.read",
+    "okta.policies.manage",
+    "okta.authorizationServers.read",
+    "okta.authorizationServers.manage",
+    "okta.inlineHooks.read",
+    "okta.inlineHooks.manage",
+  ],
+});
 const server = new McpServer({
   name: "okta-mcp-policy",
   version: "0.1.0",

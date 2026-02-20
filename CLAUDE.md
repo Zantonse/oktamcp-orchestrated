@@ -17,12 +17,52 @@ Monorepo: shared core package + 5 MCP servers, all TypeScript.
 
 ## Environment Variables
 
+Two authentication methods are supported. Set **one** of the two groups:
+
+### Option A: OAuth 2.0 Service App (recommended)
+
 | Variable | Required | Description |
 |----------|----------|-------------|
-| OKTA_ORG_URL | Yes (all) | e.g. `https://your-org.okta.com` |
-| OKTA_API_TOKEN | Yes (all) | SSWS token from Security > API > Tokens |
+| OKTA_ORG_URL | Yes | e.g. `https://your-org.okta.com` |
+| OKTA_CLIENT_ID | Yes | OAuth 2.0 client ID of the Okta service app |
+| OKTA_PRIVATE_KEY | Yes | RSA private key (PEM string or JSON JWK) |
+| OKTA_SCOPES | No | Space-separated scopes to add beyond server defaults |
+
+### Option B: SSWS API Token (legacy)
+
+| Variable | Required | Description |
+|----------|----------|-------------|
+| OKTA_ORG_URL | Yes | e.g. `https://your-org.okta.com` |
+| OKTA_API_TOKEN | Yes | SSWS token from Security > API > Tokens |
 
 Stored in root `.env` (gitignored). **Never hardcode credentials.**
+
+### OAuth 2.0 Scopes by Server
+
+Each server declares its own `requiredScopes`. The union across all 5 servers:
+
+```
+okta.users.read       okta.users.manage
+okta.groups.read      okta.groups.manage
+okta.apps.read        okta.apps.manage
+okta.policies.read    okta.policies.manage
+okta.logs.read
+okta.eventHooks.read  okta.eventHooks.manage
+okta.devices.read     okta.devices.manage
+okta.authenticators.read okta.authenticators.manage
+okta.roles.read       okta.roles.manage
+okta.sessions.read    okta.sessions.manage
+okta.authorizationServers.read okta.authorizationServers.manage
+okta.inlineHooks.read okta.inlineHooks.manage
+```
+
+| Server | Scopes |
+|--------|--------|
+| okta-mcp-users | `okta.users.read/manage`, `okta.groups.read`, `okta.apps.read`, `okta.roles.read`, `okta.authenticators.read/manage`, `okta.sessions.read/manage` |
+| okta-mcp-apps | `okta.apps.read/manage`, `okta.users.read`, `okta.groups.read/manage` |
+| okta-mcp-governance | `okta.users.read`, `okta.groups.read`, `okta.apps.read` |
+| okta-mcp-policy | `okta.policies.read/manage`, `okta.authorizationServers.read/manage`, `okta.inlineHooks.read/manage` |
+| okta-mcp-admin | `okta.roles.read/manage`, `okta.logs.read`, `okta.devices.read/manage`, `okta.eventHooks.read/manage` |
 
 ## Build Order
 
@@ -59,8 +99,11 @@ import { IgaClient } from "@okta-mcp/core";
 
 | Export | File | Purpose |
 |--------|------|---------|
-| OktaClient | client.ts | HTTP client with SSWS auth, retry, base URL handling |
-| IgaClient | iga-client.ts | Extends OktaClient with IGA headers, /governance base path |
+| OktaClient | client.ts | HTTP client with OAuth 2.0 / SSWS auth, retry, base URL handling |
+| OktaClientOptions | client.ts | Constructor options interface (requiredScopes) |
+| IgaClient | iga-client.ts | Extends OktaClient pattern with IGA headers, /governance base path |
+| OAuthTokenProvider | oauth.ts | Client-credentials token provider (JWT assertion → Bearer token) |
+| OAuthConfig | oauth.ts | Configuration interface for OAuth token provider |
 | OktaApiError | errors.ts | Structured error class with friendly messages |
 | parseOktaErrorBody | errors.ts | Safe parser for Okta error response bodies |
 | OKTA_ERROR_CODES | errors.ts | Map of E0000xxx codes to human-readable strings |

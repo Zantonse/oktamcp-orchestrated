@@ -7,7 +7,19 @@ import { registerUserRelationTools } from "./tools/user-relations.js";
 import { registerFactorTools } from "./tools/factors.js";
 import { registerSessionTools } from "./tools/sessions.js";
 
-const client = new OktaClient();
+const client = new OktaClient({
+  requiredScopes: [
+    "okta.users.read",
+    "okta.users.manage",
+    "okta.groups.read",
+    "okta.apps.read",
+    "okta.roles.read",
+    "okta.authenticators.read",
+    "okta.authenticators.manage",
+    "okta.sessions.read",
+    "okta.sessions.manage",
+  ],
+});
 const server = new McpServer({
   name: "okta-mcp-users",
   version: "0.1.0",

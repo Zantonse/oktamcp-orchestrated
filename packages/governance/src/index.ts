@@ -7,7 +7,13 @@ import { registerEntitlementTools } from "./tools/entitlements.js";
 import { registerBundleTools } from "./tools/bundles.js";
 import { registerAccessRequestTools } from "./tools/access-requests.js";
 
-const client = new IgaClient();
+const client = new IgaClient({
+  requiredScopes: [
+    "okta.users.read",
+    "okta.groups.read",
+    "okta.apps.read",
+  ],
+});
 const server = new McpServer({
   name: "okta-mcp-governance",
   version: "0.1.0",
